@@ -80,7 +80,7 @@ class AccountStatePage extends State<AccountPage> {
                     Navigator.pushAndRemoveUntil(
                       context,
                       MaterialPageRoute(builder: (BuildContext context) => LoginViewPage()),
-                      ModalRoute.withName('/'),
+                      ModalRoute.withName(''),
                     );
 
                   },

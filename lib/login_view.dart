@@ -3,6 +3,8 @@ import 'package:my_app/common/log_util.dart';
 import 'package:my_app/regist_view.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:my_app/main_tabbar.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:async/async.dart';
 
 class LoginViewPage extends StatelessWidget {
 
@@ -128,9 +130,12 @@ class LoginBody extends StatelessWidget {
   }
 
 
-  _loginAction(BuildContext context) {
+  _loginAction(BuildContext context) async {
 
     LogUtil.e("username : " + _controllerName.text + "\n password: " + _controllerPwd.text);
+
+    SharedPreferences prefs = await SharedPreferences.getInstance() as SharedPreferences;
+    prefs.setString( _controllerName.value.text.toString(), "username");
 
     Navigator.pushAndRemoveUntil(
       context,
